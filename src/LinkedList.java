@@ -96,13 +96,13 @@ public class LinkedList<T> {
 //        Node current = dummyHead.next;
 //
 //        while (current != null) {
-//            if (current.e == e)
+//            if (current.e.equals(e))
 //                return true;
 //            current = current.next;
 //        }
 
         for (Node current = dummyHead.next; current != null; current = current.next)
-            if (current.e == e)
+            if (current.e.equals(e))
                 return true;
         return false;
     }

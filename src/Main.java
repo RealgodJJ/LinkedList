@@ -13,5 +13,11 @@ public class Main {
 
         linkedList.addLast(313);
         System.out.println(linkedList);
+        System.out.println(linkedList.get(4));
+        System.out.println(linkedList.getLast());
+        System.out.println(linkedList.getFirst());
+
+        System.out.println(linkedList.contains(1231));
+        System.out.println(linkedList.contains(1218));
     }
 }
