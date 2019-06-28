@@ -41,7 +41,7 @@ public class LinkedList<T> {
 
     public void addMiddle(int index, T e) {
         if (index < 0 || index > size)
-            throw new IllegalArgumentException("The index is illegal.");
+            throw new IllegalArgumentException("Add Failed. The index is illegal.");
 
         Node prev = dummyHead;
         for (int i = 0; i < index; i++)
@@ -60,5 +60,67 @@ public class LinkedList<T> {
 
     public void addLast(T e) {
         addMiddle(size, e);
+    }
+
+    public T get(int index) {
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("Get Failed. The index is illegal.");
+
+        Node current = dummyHead.next;
+        for (int i = 0; i < index; i++)
+            current = current.next;
+
+        return current.e;
+    }
+
+    public T getFirst() {
+        return get(0);
+    }
+
+    public T getLast() {
+        return get(size - 1);
+    }
+
+    public void set(T e, int index) {
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("Set Failed. The index is Illegal.");
+
+        Node current = dummyHead.next;
+        for (int i = 0; i < index; i++)
+            current = current.next;
+
+        current.e = e;
+    }
+
+    public boolean contains(T e) {
+//        Node current = dummyHead.next;
+//
+//        while (current != null) {
+//            if (current.e == e)
+//                return true;
+//            current = current.next;
+//        }
+
+        for (Node current = dummyHead.next; current != null; current = current.next)
+            if (current.e == e)
+                return true;
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        Node current = dummyHead.next;
+        while (current != null) {
+            stringBuilder.append(current.e);
+            if (current.next != null)
+                stringBuilder.append("->");
+            else
+                stringBuilder.append("-> NULL");
+            current = current.next;
+        }
+
+        return stringBuilder.toString();
     }
 }
