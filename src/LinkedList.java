@@ -22,12 +22,12 @@ public class LinkedList<T> {
         }
     }
 
-    private Node head;
+    private Node dummyHead;
     private int size;
 
     //构造初始化一个链表
     public LinkedList() {
-        head = null;
+        dummyHead = new Node(null, null);
         size = 0;
     }
 
@@ -39,35 +39,23 @@ public class LinkedList<T> {
         return size == 0;
     }
 
-    public void addFirst(T e) {
-//        Node node = new Node(e);
-//        node.next = head;
-//        head = node;
-
-        head = new Node(e, head);
-
-        size++;
-    }
-
     public void addMiddle(int index, T e) {
         if (index < 0 || index > size)
             throw new IllegalArgumentException("The index is illegal.");
 
-        //链表在头部添加元素和中间添加元素的步骤是不同的，所以需要分情况考虑
-        if (index == 0)
-            addFirst(e);
-        else {
-            Node prev = head;
-            for (int i = 0; i < index - 1; i++)
-                prev = prev.next;
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++)
+            prev = prev.next;
 
 //            Node node = new Node(e);
 //            node.next = prev.next;
 //            prev.next = node;
-            prev.next = new Node(e, prev.next);
+        prev.next = new Node(e, prev.next);
+        size++;
+    }
 
-            size++;
-        }
+    public void addFirst(T e) {
+        addMiddle(0, e);
     }
 
     public void addLast(T e) {
