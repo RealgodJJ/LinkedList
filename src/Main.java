@@ -19,5 +19,14 @@ public class Main {
 
         System.out.println(linkedList.contains(1231));
         System.out.println(linkedList.contains(1218));
+
+        linkedList.set(1314, 1);
+        System.out.println(linkedList);
+
+        linkedList.remove(2);
+        System.out.println(linkedList);
+
+        linkedList.removeFirst();
+        System.out.println(linkedList);
     }
 }
