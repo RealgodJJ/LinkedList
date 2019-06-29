@@ -115,12 +115,12 @@ public class LinkedList<T> {
         for (int i = 0; i < index; i++)
             prev = prev.next;
 
-        Node current = prev.next;
-        prev.next = current.next;
-        current.next = null;
+        Node deleteNode = prev.next;
+        prev.next = deleteNode.next;
+        deleteNode.next = null;
         size--;
 
-        return current.e;
+        return deleteNode.e;
     }
 
     public T removeFirst() {
